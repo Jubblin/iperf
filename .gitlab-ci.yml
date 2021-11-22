@@ -13,7 +13,7 @@ stages:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   script:
     - docker build -t ${APP_NAME} .
-    - docker push $CI_REGISTRY_IMAGE/${APP_NAME};
+    - docker push $CI_REGISTRY_IMAGE/${APP_NAME}:latest
 
 
 build-image:
