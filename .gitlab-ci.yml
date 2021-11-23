@@ -10,10 +10,10 @@ stages:
     DOCKER_HOST: tcp://docker:2376
     DOCKER_TLS_CERTDIR: "/certs"
   before_script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker login --username $CI_REGISTRY_USER --password-stdin $CI_REGISTRY_PASSWORD $CI_REGISTRY
   script:
-    - docker build -t ${APP_NAME} .
-    - docker push ${APP_NAME}:${DOCKER_TAG}
+    - docker build -t $CI_REGISTRY/${APP_NAME} .
+    - docker push $CI_REGISTRY/${APP_NAME}:${DOCKER_TAG}
 
 build-image:
   stage: build
