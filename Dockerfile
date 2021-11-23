@@ -5,8 +5,7 @@ LABEL maintainer="Richard Worwood"
 ARG UID="1000"
 ARG GID="1000"
 
-RUN apk update && \
-    apk add iperf && \
+RUN apk add  --no-cache iperf && \
     rm -rf /var/cache/apk/* && \
     mkdir -p /opt/iperf && \
     addgroup --g "${GID}" -S iperf && \
@@ -22,3 +21,8 @@ USER "iperf"
 WORKDIR /opt/iperf
 
 ENTRYPOINT [ "/usr/bin/iperf" ]
+
+# Health check floods log window quite a bit.
+# If needed you can change/disable health check when starting container.
+# See Docker run reference documentation for more information.
+HEALTHCHECK CMD iperf -n 1 -c 127.0.0.1 || exit 1

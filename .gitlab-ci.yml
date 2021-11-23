@@ -29,10 +29,10 @@ stages:
   after_script:
     - docker logout $CI_REGISTRY
 
-# Dockerfile Linting:
-#   stage: linting
-#   extends:
-#     - .hadolint
+Dockerfile Linting:
+  stage: linting
+  extends:
+    - .hadolint
 
 Build container:
   stage: build
