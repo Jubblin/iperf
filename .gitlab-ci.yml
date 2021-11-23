@@ -3,6 +3,7 @@ stages:
   - build
 
 .hadolint:
+  image: docker:20.10.11
   script:
     - docker run --rm -i ghcr.io/hadolint/hadolint < Dockerfile
 
