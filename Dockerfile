@@ -20,4 +20,7 @@ ENTRYPOINT [ "/usr/bin/iperf" ]
 # Health check floods log window quite a bit.
 # If needed you can change/disable health check when starting container.
 # See Docker run reference documentation for more information.
-HEALTHCHECK CMD iperf -n 1 -c 127.0.0.1 || exit 1
+HEALTHCHECK NONE
+#  HEALTHCHECK CMD iperf -n 1 -c 127.0.0.1 || exit 1
+
+# CMD ["iperf","-s"]
