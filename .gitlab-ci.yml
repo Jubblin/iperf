@@ -17,8 +17,8 @@ stages:
     DOCKER_TLS_CERTDIR: "/certs"
   before_script:
     - echo $CI_REGISTRY_PASSWORD | docker login --username $CI_REGISTRY_USER --password-stdin $CI_REGISTRY; echo $?
-  after_script:
-    - docker logout $CI_REGISTRY; echo $?
+  # after_script:
+  #   - docker logout $CI_REGISTRY; echo $?
 
 .hadolint:
   extends:
